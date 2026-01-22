@@ -1,0 +1,106 @@
+/*----Switch Database----*/
+db = db.getSiblingDB("examDB");
+
+/*----Exercise 1:- Database & Collection Creation----*/
+
+db.students.insertMany([
+  {
+    name: "Alice Johnson",
+    age: 20,
+    course: "Computer Science",
+    marks: 85
+  },
+  {
+    name: "Bob Smith",
+    age: 22,
+    course: "Information Technology",
+    marks: 78
+  }
+])
+
+/*----Exercise 2: Insert Document with Multiple Fields----*/
+
+db.students.insertOne({
+  name: "Charlie Brown",
+  department: "Electronics",
+  semester: 6,
+  mobile: "9876543210"
+})
+
+/*----Exercise 3: Array of Simple Values----*/
+
+db.subjects.insertOne({
+  course_name: "Computer Science",
+  subject_list: ["Data Structures", "Operating Systems", "Databases", "Computer Networks"]
+})
+
+/*----Exercise 4: Array of Objects----*/
+
+db.faculty.insertOne({
+  department: "Computer Science",
+  teachers: [
+    {
+      name: "Dr. Rao",
+      experience: 12
+    },
+    {
+      name: "Ms. Sharma",
+      experience: 6
+    },
+    {
+      name: "Mr. Kumar",
+      experience: 4
+    }
+  ]
+})
+
+/*----Exercise 5: Explicit Primary Key----*/
+
+db.students.insertOne({
+  _id: ObjectId(),
+  name: "David Lee",
+  department: "Mechanical",
+  semester: 3
+})
+
+/*----Exercise 6: Duplicate Primary Key Observation----*/
+
+db.students.insertOne({
+  _id: 101,
+  name: "Emma Watson",
+  department: "Physics",
+  semester: 4
+})
+
+db.students.insertOne({
+  _id: 101,
+  name: "Liam Brown",
+  department: "Chemistry",
+  semester: 2
+})
+
+E11000 duplicate key error collection: examDB.students index: _id_ dup key: { _id: 101 }
+
+/*----Exercise 7: Multiple Inserts Using insert()----*/
+
+db.courses.insert({
+  course_id: "C101",
+  course_name: "Database Systems",
+  duration: "6 months"
+})
+
+db.courses.insert({
+  course_id: "C102",
+  course_name: "Operating Systems",
+  duration: "5 months"
+})
+
+db.courses.insert({
+  course_id: "C103",
+  course_name: "Computer Networks",
+  duration: "4 months"
+})
+
+
+
+
